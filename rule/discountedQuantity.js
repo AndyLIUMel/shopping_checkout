@@ -1,10 +1,14 @@
-function discount(order) {
-  if (order["atv"] && order["atv"].quantity >= 3) {
-    order["atv"].discountedQuantity =
-      order["atv"].quantity - (order["atv"].quantity % 3);
-    order["atv"].freeQuantity = order["atv"].discountedQuantity / 3;
-  }
-  return order;
+function discount(config) {
+  return (order) => {
+    if (order[config.sku] && order[config.sku].quantity >= config.x) {
+      order[config.sku].discountedQuantity =
+        order[config.sku].quantity - (order[config.sku].quantity % config.x);
+      order[config.sku].freeQuantity =
+        (order[config.sku].discountedQuantity / config.x) *
+        (config.x - config.y);
+    }
+    return order;
+  };
 }
 
 export default discount;

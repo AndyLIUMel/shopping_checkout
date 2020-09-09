@@ -1,9 +1,11 @@
-function discount(order) {
-  if (order["ipd"] && order["ipd"].quantity > 4) {
-    order["ipd"].discountedPrice = 499.99;
-    order["ipd"].discountedQuantity = order["ipd"].quantity;
-  }
-  return order;
+function discount(config) {
+  return (order) => {
+    if (order[config.sku] && order[config.sku].quantity > config.quantity) {
+      order[config.sku].discountedPrice = config.price;
+      order[config.sku].discountedQuantity = order[config.sku].quantity;
+    }
+    return order;
+  };
 }
 
 export default discount;
