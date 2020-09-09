@@ -21,7 +21,7 @@ class Checkout {
 
   applyDiscount = (pricingRules) => {
     for (const rule of pricingRules) {
-      rule(this.order);
+      this.order = rule(this.order);
     }
   };
 

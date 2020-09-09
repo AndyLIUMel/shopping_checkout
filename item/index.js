@@ -2,7 +2,7 @@ const items = [
   { sku: "ipd", price: 549.99 },
   { sku: "mbp", price: 1399.99 },
   { sku: "atv", price: 109.5 },
-  { sku: "vga", price: 30 },
+  { sku: "vga", price: 30.0 },
 ];
 let skuMapIndex = {};
 
@@ -19,7 +19,7 @@ function getSkuByIndex(sku) {
       skuMapIndex[sku] = i;
     }
   }
-  return skuMapIndex[sku] || -1;
+  return skuMapIndex[sku];
 }
 
 export { getItemBySku };
